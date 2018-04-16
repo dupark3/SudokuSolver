@@ -6,13 +6,15 @@ using namespace std;
 
 int main(){
     ifstream myPuzzle;
-    myPuzzle.open();
+    myPuzzle.open("sudoku1.txt");
+
     if(myPuzzle.is_open()){
-        string line;
-        while ( getline(myPuzzle, line) )
-            cout << line;
+        read(myPuzzle, sudoku);
+        solve(myPuzzle, mySolution);
+        print(mySolution);
+        return 0;
     } else {
         cout << "Failed to open puzzle" << endl;
+        return 1;
     }
-    return 0;
 }
