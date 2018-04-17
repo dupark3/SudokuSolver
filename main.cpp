@@ -1,20 +1,28 @@
+#include <array> 
 #include <fstream>
 #include <iostream>
 #include <string>
+
+#include "print.h"
+#include "read.h"
+#include "solve.h"
+#include "sudoku.h"
 
 using namespace std;
 
 int main(){
     ifstream myPuzzle;
-    myPuzzle.open("sudoku1.txt");
+    puzzleFile.open("sudoku1.txt");
+    array<array<minibox, 9>, 9> mySolution;
 
-    if(myPuzzle.is_open()){
-        read(myPuzzle, sudoku);
-        solve(myPuzzle, mySolution);
-        print(mySolution);
-        return 0;
-    } else {
+    if(!puzzleFile.is_open()){
         cout << "Failed to open puzzle" << endl;
         return 1;
     }
+
+    read(puzzleFile, mySolution);
+    solve(puzzleFile, mySolution);
+    print(mySolution);
+    return 0;
+    
 }
